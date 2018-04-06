@@ -8,7 +8,14 @@ main:
     push    {ip, lr}
 
     @ Load the argument and perform the call. This is like 'printf("...")' in C.
-    ldr     r0, =message
+
+    ldr     r0, =line1
+    bl      printf
+
+    ldr     r0, =line2
+    bl      printf
+
+    ldr     r0, =line3
     bl      printf
 
     @ Exit from 'main'. This is like 'return 0' in C.
@@ -18,7 +25,13 @@ main:
     pop     {ip, pc}
 
     @ --------------------------------
-    @ Data for the printf call. The GNU assembler's ".asciz" directive
+    @ Data for the printf call. The GNU assembler's' ".asciz" directive
     @ automatically adds a NULL character termination.
 message:
     .asciz  "Hello, world.\n"
+line1:
+    .asciz  "Tasty snack indeed\n"
+line2:
+    .asciz  "But ours is not edible\n"
+line3:
+    .asciz  "Pie de raspberry\n"     
